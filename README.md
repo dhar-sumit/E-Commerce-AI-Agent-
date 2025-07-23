@@ -33,14 +33,14 @@ The **E-commerce AI Data Agent** is a cutting-edge, AI-powered analytics tool de
 
 ## 📚 Technologies Used
 
--   **🧠 Google Gemini API: Powers natural language understanding, SQL generation, and humanized responses.".
--   **🐍 Python 3.10+: Core programming language.
--   **🌐 Flask: Lightweight web framework for the backend API and UI.
--   **📊 Plotly: For creating rich, interactive data visualizations.
--   **🧮 SQLite3: Efficient local relational database for data storage.
--   **🎨 HTML, CSS, JavaScript: Building the dynamic and engaging frontend interface.
--   **🐼 Pandas: For robust data manipulation and integration with SQL/CSVs.
--   **✨ python-dotenv: For secure management of environment variables.
+-   **🧠 Google Gemini API**: Powers natural language understanding, SQL generation, and humanized responses.".
+-   **🐍 Python 3.10+**: Core programming language.
+-   **🌐 Flask**: Lightweight web framework for the backend API and UI.
+-   **📊 Plotly**: For creating rich, interactive data visualizations.
+-   **🧮 SQLite3**: Efficient local relational database for data storage.
+-   **🎨 HTML, CSS, JavaScript**: Building the dynamic and engaging frontend interface.
+-   **🐼 Pandas**: For robust data manipulation and integration with SQL/CSVs.
+-   **✨ python-dotenv**: For secure management of environment variables.
   
 ---
 
@@ -106,17 +106,17 @@ ecom_ai_assistant/                     # Main project root directory
 
 This project is licensed under the MIT License – feel free to use, modify, and distribute it with proper credit.
 
--   **Google & the Gemini team for their powerful LLM APIs.
--   **Plotly for their exceptional charting libraries.
--   **The Flask and Pandas communities for their robust frameworks.
--   **All open-source contributors who inspire modern development practices.
+-   Google & the Gemini team for their powerful LLM APIs.
+-   Plotly for their exceptional charting libraries.
+-   The Flask and Pandas communities for their robust frameworks.
+-   All open-source contributors who inspire modern development practices.
 
 ---
 
 ## 🤝 Connect with Me
 
--   **🔗 LinkedIn: linkedin.com/in/sumit-dhar/
--   **💻 GitHub: github.com/dhar-sumit
--   **📧 Email: sumiths.0015@gmail.com
+-   **🔗 LinkedIn: linkedin.com/in/sumit-dhar/**
+-   **💻 GitHub: github.com/dhar-sumit**
+-   **📧 Email: sumiths.0015@gmail.com**
 
 ---
