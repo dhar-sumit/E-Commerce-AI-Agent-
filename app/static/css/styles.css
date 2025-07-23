@@ -1,0 +1,592 @@
+/* static/styles.css */
+
+/* --- Custom Color Palette & Variables (Light Mode Defaults) --- */
+:root {
+    /* Primary brand colors */
+    --primary-color: #6f0a3c; /* Deep Purple */
+    --secondary-color: #9c67dc; /* Brighter Purple */
+    --accent-color: #ff9f00; /* Vibrant Orange */
+    --heading-text: #6f0a3c;
+    --ai-answer-text: #641e41;
+    
+    /* Text colors */
+    --text-dark: #2c3e50;   /* Charcoal gray for main content text */
+    --text-medium: #636e72; /* Medium gray for secondary text */
+    --text-light: #f8f8f8;  /* Off-white for text on dark backgrounds (e.g., header, dark cards) */
+
+    /* Backgrounds */
+    --bg-page-start: #e0e6ed; /* Softer start for subtle gradient */
+    --bg-page-end: #f5f8fc;   /* Softer end for subtle gradient */
+    --bg-card: #ffffff; /* Pure white for section backgrounds */
+    --bg-header-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    
+    /* Borders & Shadows */
+    --border-light: #dfe4ea; 
+    --shadow-light: 0 8px 25px rgba(0, 0, 0, 0.1); 
+    --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.25); 
+
+    /* Status Colors */
+    --success-color: #2ecc71; 
+    --error-color: #e74c3c; 
+    --info-color: #3498db; 
+
+    /* Typography Scale (remains the same) */
+    --font-size-xs: 0.75rem; 
+    --font-size-sm: 0.875rem; 
+    --font-size-base: 1rem; 
+    --font-size-md: 1.05rem; 
+    --font-size-lg: 1.15rem; 
+    --font-size-xl: 1.35rem; 
+    --font-size-2xl: 2rem; 
+    --font-size-3xl: 2.5rem; 
+}
+
+/* --- Dark Mode Variables (ADJUSTED FOR CONSISTENT GRADIENT & TEXT VISIBILITY) --- */
+body.dark-mode {
+    /* Primary brand colors for dark mode (adjusted for background gradient, based on your previous input) */
+    --primary-color: #6f0a3c; /* Deep red-purple for dark mode primary */
+    --secondary-color: #9c67dc; /* Blue-purple for dark mode secondary */
+    --accent-color: #fdd835; /* Yellowish orange */
+
+    --heading-text: #de3d8d;
+    --ai-answer-text: #bca3b0;
+
+    /* Text colors for dark mode */
+    --text-dark: #e0e0e0; /* Main content text is light gray */
+    --text-medium: #b0b0b0; /* Secondary text is lighter mid-gray */
+    --text-light: #f8f8f8; /* CRITICAL FIX: ALL HEADER/BUTTON TEXT IS WHITE IN DARK MODE */
+
+    /* Backgrounds for dark mode - consistent gradient everywhere */
+    --bg-page-start: #1a1a2e; /* Dark blue-purple page background */
+    --bg-page-end: #0a0a1a;   /* Even darker end */
+    --bg-card: linear-gradient(180deg, var(--bg-page-start) 100%, var(--bg-page-end) 100%); /* Cards get a subtle dark gradient */
+    --bg-header-gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); /* Header uses dark mode primary/secondary for its gradient */
+    
+    /* Borders & Shadows for dark mode */
+    --border-light: #3a3a3a; 
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.4); 
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.6); 
+
+    /* Status Colors for dark mode */
+    --success-color: #2ecc71; 
+    --error-color: #cf6679; 
+    --info-color: #87ceeb; 
+}
+
+/* --- Base Styles (remains the same, uses variables) --- */
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(180deg, var(--bg-page-start) 0%, var(--bg-page-end) 100%);
+    background-attachment: fixed; 
+    color: var(--text-dark); /* Main text color changes with theme */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    font-size: var(--font-size-base);
+    transition: background 0.5s ease-in-out, color 0.3s ease-in-out; 
+    /* overflow-y: hidden; */
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar visual track */
+    width: 0;      /* For vertical scrollbar */
+    height: 0;     /* For horizontal scrollbar */
+}
+
+/* --- Main Layout Structure (remains the same, uses variables) --- */
+.main-wrapper {
+    width: 100%;
+    max-width: 900px; 
+    margin: 0 auto;
+    padding: 20px; 
+    box-sizing: border-box; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    animation: fadeIn 0.8s ease-out; 
+}
+
+.app-header {
+    text-align: center;
+    padding: 30px 0; 
+    background: var(--bg-header-gradient); /* Dynamic background */
+    color: var(--text-light); /* APP TITLE & TAGLINE WILL BE LIGHT */
+    border-radius: 15px; 
+    margin-bottom: 40px; 
+    box-shadow: var(--shadow-hover); 
+    overflow: hidden; 
+    position: relative; 
+}
+
+.app-title {
+    font-size: var(--font-size-3xl); 
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.03em; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
+}
+
+.app-tagline {
+    font-size: var(--font-size-lg);
+    opacity: 0.9;
+    font-weight: 300; 
+}
+
+.content-area {
+    flex: 1; 
+}
+
+.section-title {
+    color: var(--heading-text); /* Dynamic color */
+    font-size: var(--font-size-xl); 
+    font-weight: 600;
+    margin-top: 35px; 
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-light); 
+    padding-bottom: 10px;
+    text-align: left; 
+}
+.section-title:first-of-type { 
+    margin-top: 0;
+}
+
+
+/* --- Card & Form Styles (using dynamic variables) --- */
+.card-section { 
+    background: var(--bg-card); /* Now uses dynamic card background from vars */
+    border-radius: 10px;
+    box-shadow: var(--shadow-light); 
+    padding: 30px; 
+    margin-bottom: 30px; 
+    transition: box-shadow 0.3s ease-in-out, background 0.3s ease-in-out; 
+    animation: slideInUp 1s ease-out forwards; 
+}
+.card-section:hover {
+    box-shadow: var(--shadow-hover); 
+}
+
+.form-group {
+    margin-bottom: 25px; 
+}
+
+.form-label {
+    display: block;
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--text-dark);
+    /* --- NEW ANIMATION --- */
+    white-space: nowrap; /* Prevent text wrapping during animation */
+    overflow: hidden; /* Hide overflowing text before reveal */
+    border-right: 2px solid transparent; /* Mimic a typing cursor */
+    animation: 
+        revealText 5s steps(80, end) forwards, /* Text reveal animation */
+        typingCursor 4s step-start infinite; /* Blinking cursor */
+}
+
+/* Class to hide the animation after it plays or when user starts typing */
+.form-label.animation-completed,
+.form-label.hide-animation { 
+    animation: none; /* Stop all animations */
+    border-right-color: transparent; /* Hide cursor */
+}
+
+textarea:focus + .form-label, .form-label.hide-animation { 
+    animation: none;
+}
+
+
+textarea { 
+    width: 100%;
+    padding: 12px 15px; 
+    border: 1px solid var(--border-light); 
+    border-radius: 8px;
+    font-size: var(--font-size-base);
+    box-sizing: border-box; 
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    background-color: var(--bg-card); /* Dynamic background */
+    color: var(--text-dark); /* Dynamic text color */
+}
+
+textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(106, 5, 114, 0.2), 0 5px 15px rgba(0,0,0,0.1); 
+    outline: none; 
+}
+
+.submit-button {
+    display: block; 
+    width: 40%; 
+    margin: 0 auto; 
+    padding: 12px 25px; 
+    background-color: rgb(101, 23, 111); /* Dynamic background color from primary-color */
+    color: var(--text-light); /* Button text always light */
+    border: none;
+    border-radius: 8px; 
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out;
+    letter-spacing: 0.05em; 
+    box-shadow: var(--shadow-light); 
+}
+
+.submit-button:hover {
+    background-color: rgb(166, 34, 126);; /* Dynamic hover color */
+    transform: translateY(-3px); 
+    box-shadow: var(--shadow-hover); 
+}
+.submit-button:active {
+    transform: translateY(0); 
+    background-color: var(--primary-color); 
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.15); 
+}
+
+
+/* --- Theme Toggle Button --- */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.15); 
+    border: 1px solid rgba(255, 255, 255, 0.3); 
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out; 
+    outline: none;
+    z-index: 10; 
+    color: var(--text-light); /* Icon color is light */
+}
+body.dark-mode .theme-toggle { 
+    background-color: rgba(0, 0, 0, 0.15); /* Darker background for toggle in dark mode */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+body.dark-mode .theme-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.25);
+    border-color: rgba(0, 0, 0, 0.5);
+}
+
+.theme-toggle .icon-light,
+.theme-toggle .icon-dark {
+    display: none; 
+}
+
+body:not(.dark-mode) .theme-toggle .icon-light {
+    display: block; 
+}
+
+body.dark-mode .theme-toggle .icon-dark {
+    display: block; 
+}
+
+
+/* --- Results Display Styles (using dynamic variables) --- */
+.user-question-text {
+    font-style: italic;
+    color: var(--text-dark); 
+    background-color: var(--bg-page); /* Use page background for contrast */
+    padding: 15px 20px;
+    border: 1px solid var(--border-light); 
+    border-left: 4px solid var(--accent-color); 
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: var(--font-size-md); 
+}
+
+.sql-code-block {
+    display: block;
+    background-color: var(--bg-page); /* Dynamic background for code block */
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-light); 
+    overflow-x: auto; 
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: var(--font-size-sm); 
+    line-height: 1.4;
+    color: var(--info-color); /* Blue text for SQL query */
+    white-space: pre-wrap;
+    word-break: break-all;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); 
+}
+body.dark-mode .sql-code-block {
+    background-color: var(--bg-card); /* Consistent dark card background for code */
+    color: var(--info-color); 
+    border-color: var(--border-light);
+}
+
+
+.table-responsive-wrapper {
+    overflow-x: auto; 
+    margin-bottom: 25px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-light); 
+}
+
+.data-table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    background-color: var(--bg-card); /* Dynamic table background */
+    border-radius: 8px;
+    overflow: hidden; 
+}
+
+.data-table th, .data-table td {
+    padding: 12px 18px; 
+    text-align: left;
+    border-bottom: 1px solid var(--border-light); 
+    font-size: var(--font-size-sm);
+    color: var(--text-dark); 
+}
+
+.data-table th {
+    background-color: var(--primary-color); 
+    color: var(--text-light); /* Header text always light */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.05em;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table tr:nth-child(even) {
+    background-color: rgba(var(--primary-color-rgb-val), 0.05); 
+}
+/* Define RGB values for transparency in background-color */
+:root { --primary-color-rgb-val: 106, 5, 114; } 
+body.dark-mode { --primary-color-rgb-val: 187, 134, 252; } 
+
+
+.ai-answer-text {
+    font-size: var(--font-size-lg);
+    font-weight: bold;
+    color: var(--ai-answer-text);
+    background-color: rgba(46, 204, 113, 0.1); 
+    padding: 18px 25px;
+    border-radius: 10px;
+    border: 1px solid var(--success-color);
+    margin-top: 30px;
+    line-height: 1.5;
+    animation: fadeIn 0.5s ease-out forwards; 
+    text-align: left;
+}
+
+/* Error states for answer and messages */
+.ai-answer-text.error-message-text, .error-message {
+    color: var(--error-color);
+    background-color: rgba(231, 76, 60, 0.1); 
+    border: 1px solid var(--error-color);
+}
+
+.error-message {
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 25px;
+}
+
+
+/* --- Status Indicators (Loading/Error) --- */
+.status-indicator {
+    text-align: center;
+    margin-top: 40px;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--text-medium); 
+}
+
+.loading-indicator {
+    color: var(--primary-color);
+}
+
+.spinner {
+    border: 5px solid rgba(var(--primary-color-rgb-val), 0.2); 
+    border-left-color: var(--primary-color);
+    border-radius: 50%;
+    width: 45px; 
+    height: 45px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Label Text Reveal Animation --- */
+@keyframes revealText {
+    from {
+        clip-path: inset(0 100% 0 0); /* Start completely hidden to the right */
+    }
+    to {
+        clip-path: inset(0 0% 0 0); /* Reveal fully */
+    }
+}
+
+/* Also needed for typing effect: a "step" function for animation timing */
+@keyframes typingCursor {
+    from, to { border-right-color: transparent; }
+}
+
+
+/* --- Floating Title Animation --- */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); } 
+    100% { transform: translateY(0px); }
+}
+
+/* --- Button Blink Animation --- */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+
+/* --- Slide-in Animation for elements when results appear --- */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Apply slide-in to result cards */
+.results-container, .chart-section {
+    animation: slideInUp 0.6s ease-out forwards;
+}
+
+
+/* --- Chart Container --- */
+.chart-section {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.chart-container {
+    padding: 20px; 
+    background-color: var(--bg-card); 
+    border: 1px solid var(--border-light); 
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    text-align: center; 
+    min-height: 400px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    overflow: auto; 
+    position: relative; 
+    z-index: 1;
+}
+
+.js-plotly-plot {
+    width: 100% !important; 
+    height: auto !important; 
+    min-height: 350px !important; 
+    max-height: 600px; 
+    
+    margin: 0 auto !important; 
+    display: block !important;
+    box-sizing: border-box !important;
+}
+
+
+/* --- Footer --- */
+.app-footer {
+    text-align: center;
+    /* padding: 5px; */
+    margin-top: 5px;
+    color: var(--text-medium); 
+    font-size: var(--font-size-sm);
+    border-top: 1px solid var(--border-light); 
+    background-color: var(--bg-page); 
+    border-radius: 10px;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 992px) { 
+    .main-wrapper {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) { 
+    .app-title {
+        font-size: var(--font-size-2xl);
+    }
+    .app-tagline {
+        font-size: var(--font-size-base);
+    }
+    .section-title {
+        font-size: var(--font-size-lg);
+    }
+    .card-section {
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .submit-button {
+        width: 60%; 
+        font-size: var(--font-size-base);
+    }
+    .user-question-text, .sql-code-block, .data-table th, .data-table td, .ai-answer-text {
+        font-size: var(--font-size-sm);
+    }
+    .ai-answer-text {
+        padding: 15px 20px;
+    }
+    .chart-container {
+        min-height: 300px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 576px) { 
+    .app-title {
+        font-size: 1.8rem;
+    }
+    .app-tagline {
+        font-size: var(--font-size-sm);
+    }
+    .submit-button {
+        width: 80%;
+    }
+    .card-section {
+        padding: 15px;
+    }
+    .section-title {
+        font-size: var(--font-size-base);
+    }
+    .sql-code-block, .data-table th, .data-table td {
+        font-size: var(--font-size-xs); 
+    }
+}

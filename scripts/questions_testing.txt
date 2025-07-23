@@ -1,0 +1,6 @@
+1. What is my total sales?
+2. Calculate the RoAS (Return on Ad Spend).
+3. Which product had the highest CPC (Cost Per Click)?
+4. Show me the ad sales, total sales, and ad spend for item ID 4 on June 1, 2025.
+5. What were the daily total ad sales, units sold from ads, and total units ordered for June 2025?
+6. What were the impressions and clicks for ads on June 1, 2025?

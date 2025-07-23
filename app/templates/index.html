@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce AI Assistant 📈</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    
+    <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+    <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.0.1.min.js" integrity="sha256-oy6Be7Eh6eiQFs5M7oXuPxxm9qbJXEtTpfSI93dW16Q=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main-wrapper">
+        <header class="app-header">
+            <h1 class="app-title">E-commerce Data Q&A 📊</h1>
+            <p class="app-tagline">Unlock real-time insights from data sets with natural language. 🚀</p>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                <span class="icon-light">💡</span>
+                <span class="icon-dark">🌙</span>
+            </button>
+        </header>
+
+        <main class="content-area">
+            <section class="card-section input-card">
+                <form id="queryForm" class="input-form">
+                    <div class="form-group">
+                        <label for="questionInput" class="form-label">Ask your analytics question:</label>
+                        <textarea id="questionInput" name="question" rows="4" placeholder="e.g., What were the total ad sales for item 0 on 2025-06-01?"></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Get Insight</button>
+                </form>
+            </section>
+
+            <div id="loadingIndicator" class="status-indicator loading-indicator" style="display: none;">
+                <div class="spinner"></div>
+                <p id="loadingMessage">Generating SQL query... 🔍</p> 
+            </div>
+
+            <div id="errorDisplay" class="status-indicator error-message" style="display: none;">
+                <p>An unexpected error occurred. Please try again. 🚨</p>
+            </div>
+
+            <div id="resultsContainer" class="card-section results-container" style="display: none;">
+                <h3 class="section-title">Your Question:</h3>
+                <p id="displayQuestion" class="user-question-text"></p>
+
+                <h3 class="section-title">Generated SQL Query:</h3>
+                <pre><code id="displaySql" class="sql-code-block"></code></pre>
+
+                <h3 class="section-title">Raw Query Results:</h3>
+                <div class="table-responsive-wrapper">
+                    <div id="displayRawResults" class="data-table">
+                        </div>
+                </div>
+
+                <h3 class="section-title">AI Answer:</h3>
+                <p class="ai-answer-text" id="displayAnswer"></p>
+            </div>
+            
+            <div id="chartsContainer" class="card-section chart-section" style="display: none;">
+                <h3 class="section-title">📊 Visualization</h3>
+                <div id="displayChart" class="chart-container">
+                    </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; {{ current_year }} E-commerce AI Assistant - By Sumit Dhar. <br> All rights reserved. ✨</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
